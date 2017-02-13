@@ -290,6 +290,7 @@ button,
 html [type="button"], /* 1 */
 [type="reset"],
 [type="submit"] {
+  cursor: pointer;
   -webkit-appearance: button; /* 2 */
 }
 
