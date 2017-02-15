@@ -34,7 +34,7 @@ header {
   height: 420px;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url(http://cdn.paper4pc.com/images/blue-river-wallpaper-3.jpg)
+  background-image: url(../assets/background_header.jpg)
 }
 footer {
   line-height: 40px;
@@ -42,15 +42,17 @@ footer {
   background-color: lightgray;
   font-family: chateau_de_garage;
 }
-section {
+section, article {
   padding: 100px 0;
 }
-section h2.section-heading {
+section h2.section-heading,
+article h2.section-heading {
   font-size: 40px;
   margin-top: 0;
   margin-bottom: 15px;
 }
-section h3.section-subheading {
+section h3.section-subheading,
+article h3.section-subheading {
   font-size: 16px;
   font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: none;
@@ -69,7 +71,6 @@ section h3.section-subheading {
   color: #777777;
 }
 #why, #who{
-  /*background-image: url(http://cbsnews3.cbsistatic.com/hub/i/r/2016/11/15/fc1380e9-1ee1-4f41-8419-ec38a1558eec/thumbnail/620x350/5a43c5cbb81979e9ff51c4e601e99718/fish.jpg);*/
   background-color: lightgray;
 }
 #contact {
@@ -91,6 +92,10 @@ section h3.section-subheading {
 .video {
   max-width: 560px;
   height: 315px;
+}
+.img {
+  max-width: 350px;
+  border-radius: 4px;
 }
 ul.list-inline {
   margin-bottom: 30px;
@@ -136,7 +141,8 @@ ul.social-buttons li a:active {
   header {
       height: 100vh;
   }
-  section {
+  section,
+  article {
     padding: 150px 0;
   }
   .mainHead {
@@ -147,6 +153,9 @@ ul.social-buttons li a:active {
   }
   .video {
     width: 560px;
+  }
+  .img {
+    max-width: 100%;
   }
   .navbar {
     border-radius: 4px;
@@ -353,6 +362,7 @@ ul.social-buttons li a:active {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
+  text-decoration: none !important;
 }
 .navbar-default .navbar-nav > li > a {
   color: #000;
@@ -363,24 +373,6 @@ ul.social-buttons li a:active {
   color: #fed136;
   background-color: transparent;
 }
-/*.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  color: #555;
-  background-color: #e7e7e7;
-}
-.navbar-default .navbar-nav > .disabled > a,
-.navbar-default .navbar-nav > .disabled > a:hover,
-.navbar-default .navbar-nav > .disabled > a:focus {
-  color: #ccc;
-  background-color: transparent;
-}*/
-/*.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-  color: #555;
-  background-color: #e7e7e7;
-}*/
 @media (min-width: 768px) {
   .nav-active {
     color: #fed136;
@@ -395,7 +387,7 @@ ul.social-buttons li a:active {
   }
   .navbar-right > li a {
     padding: 0 10px;
-    text-decoration: none !important;
+    text-decoration: none;
   }
 }
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {

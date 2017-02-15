@@ -12,45 +12,20 @@ $('a.page-scroll').click('click', function(e) {
          }, 1250, 'easeInOutExpo');
          event.preventDefault();
 })
+
 var aChildren = $(".navbar-right li").children(); // find the a children of the list items
-var aArray = []; // create the empty aArray
  $(window).scroll(function(){
         var windowPos = $(window).scrollTop(); // get the offset of the window from the top of page
         var windowHeight = $(window).height(); // get the height of the window
-        var docHeight = $(document).height();
-
-        for (var i=0; i < aArray.length; i++) {
-            var theID = aArray[i];
-            var divPos = $(theID).offset().top; // get the offset of the div from the top of page
-            var divHeight = $(theID).height(); // get the height of the div in question
+        for (var i=0; i < aChildren.length; i++) {
+            var Child = aChildren[i]            //get the specific child
+            var ID= Child.href.split('#')[1];   //get the id for that child's href
+            var divPos = $('#'+ID).offset().top; // get the offset of the div from the top of page
+            var divHeight = $('#'+ID).height(); // get the height of the div in question
             if (windowPos >= divPos && windowPos < (divPos + divHeight)) {
-                $("a[href='" + theID + "']").addClass("nav-active");
+                $("a[href='#" + ID + "']").css("color","#fed138"); //change the color when in the area
             } else {
-                $("a[href='" + theID + "']").removeClass("nav-active");
-            }
-        }
-
-        if(windowPos + windowHeight == docHeight) {
-            if (!$("nav li:last-child a").hasClass("nav-active")) {
-                var navActiveCurrent = $(".nav-active").attr("href");
-                $("a[href='" + navActiveCurrent + "']").removeClass("nav-active");
-                $("nav li:last-child a").addClass("nav-active");
+                $("a[href='#" + ID + "']").css("color","black");
             }
         }
     });
-
-// (function($) {
-//     $('a.page-scroll').bind('click', function(event) {
-//         var $anchor = $(this);
-//         $('html, body').stop().animate({
-//             scrollTop: ($($anchor.attr('href')).offset().top - 50)
-//         }, 1250, 'easeInOutExpo');
-//         event.preventDefault();
-//     });
-
-//     // Highlight the top nav as scrolling occurs
-//     $('body').scrollspy({
-//         target: '.navbar-fixed-top',
-//         offset: 51
-//     });
-
