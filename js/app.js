@@ -15,6 +15,7 @@ $('a.page-scroll').click('click', function(e) {
 })
 
 var aChildren = $(".navbar-right li").children(); // find the a children of the list items
+var css = 'table td:hover{ background-color: #00ff00 }'; //to get the hover effect back
  $(window).scroll(function(){
     var windowPos = $(window).scrollTop(); // get the offset of the window from the top of page
     var windowHeight = $(window).height(); // get the height of the window
@@ -26,7 +27,13 @@ var aChildren = $(".navbar-right li").children(); // find the a children of the 
         if (windowPos >= divPos && windowPos < (divPos + divHeight)) {
             $("a[href='#" + ID + "']").css("color","#fed138"); //change the color when in the area
         } else {
-            $("a[href='#" + ID + "']").css("color","black");
+            $("a[href='#" + ID + "']").css("color","black")
+            $("a[href='#" + ID + "']").mouseenter(function(){
+                $(this).css("color","#fed138");
+            })
+            $("a[href='#" + ID + "']").mouseleave(function(){
+                $(this).css("color","black");
+            })
         }
     }
 });

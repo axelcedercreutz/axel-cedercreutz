@@ -360,7 +360,7 @@ ul.social-buttons li a:active {
 @media (min-width: 768px) {
   .nav-active {
     color: #fed136;
-    background-color: transparent;
+    background-color: white;
   }
   .navbar-right {
     float: right !important;
