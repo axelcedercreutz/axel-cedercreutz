@@ -235,22 +235,6 @@ ul.social-buttons li a:active {
   text-decoration: none;
   background-color: #eee;
 }
-/*.nav > li.disabled > a {
-  color: #777;
-}
-.nav > li.disabled > a:hover,
-.nav > li.disabled > a:focus {
-  color: #777;
-  text-decoration: none;
-  cursor: not-allowed;
-  background-color: transparent;
-}
-.nav .open > a,
-.nav .open > a:hover,
-.nav .open > a:focus {
-  background-color: #eee;
-  border-color: #337ab7;
-}*/
 .navbar-default {
   background-color: transparent;
 }
