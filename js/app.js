@@ -13,7 +13,6 @@ $('a.page-scroll').click('click', function(e) {
          }, 1250, 'easeInOutExpo');
          event.preventDefault();
 })
-
 var aChildren = $(".navbar-right li").children(); // find the a children of the list items
  $(window).scroll(function(){
     var windowPos = $(window).scrollTop(); // get the offset of the window from the top of page
@@ -21,18 +20,20 @@ var aChildren = $(".navbar-right li").children(); // find the a children of the 
     for (var i=0; i < aChildren.length; i++) {
         var Child = aChildren[i]            //get the specific child
         var ID= Child.href.split('#')[1];   //get the id for that child's href
-        var divPos = $('#'+ID).offset().top; // get the offset of the div from the top of page
-        var divHeight = $('#'+ID).height() + 150; // get the height of the div in question
-        if (windowPos >= divPos && windowPos < (divPos + divHeight)) {
-            $("a[href='#" + ID + "']").css("color","#fed138"); //change the color when in the area
-        } else {
-            $("a[href='#" + ID + "']").css("color","black")
-            $("a[href='#" + ID + "']").mouseenter(function(){
-                $(this).css("color","#fed138");
-            })
-            $("a[href='#" + ID + "']").mouseleave(function(){
-                $(this).css("color","black");
-            })
+        if(ID.offset != undefined) {
+            var divPos = $('#'+ID).offset().top; // get the offset of the div from the top of page
+            var divHeight = $('#'+ID).height() + 150; // get the height of the div in question
+            if (windowPos >= divPos && windowPos < (divPos + divHeight)) {
+                $("a[href='#" + ID + "']").css("color","#fed138"); //change the color when in the area
+            } else {
+                $("a[href='#" + ID + "']").css("color","black")
+                $("a[href='#" + ID + "']").mouseenter(function(){
+                    $(this).css("color","#fed138");
+                })
+                $("a[href='#" + ID + "']").mouseleave(function(){
+                    $(this).css("color","black");
+                })
+            }
         }
     }
 });
