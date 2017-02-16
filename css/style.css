@@ -36,6 +36,12 @@ header {
   background-position: center center;
   background-image: url(../assets/background_header.jpg)
 }
+#headFAQ {
+  height: 420px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(../assets/background_header.jpg)
+}
 footer {
   line-height: 40px;
   padding: 30px 0;
@@ -62,6 +68,10 @@ article h3.section-subheading {
 }
 .mainHead {
   margin-top: 100px;
+  font-size: 6em;
+}
+.mainFAQ {
+  margin-top: 150px;
   font-size: 6em;
 }
 .text-center {
@@ -229,6 +239,7 @@ ul.social-buttons li a:active {
   position: relative;
   display: block;
   padding: 10px 15px;
+  transition: all 0.3s;
 }
 .nav > li > a:hover,
 .nav > li > a:focus {
@@ -267,6 +278,7 @@ ul.social-buttons li a:active {
 }
 .navbar-default .navbar-toggle {
   border-color: #ddd;
+  transition: all 0.3s;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
@@ -294,11 +306,12 @@ ul.social-buttons li a:active {
 .navbar-default .navbar-brand {
   color: #000;
   text-decoration: none;
+  transition: all 0.3s;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
   
-  color: #fed136;/*color: #5e5e5e;*/
+  color: #fed136;
   background-color: transparent;
 }
 .navbar-brand {
@@ -307,6 +320,7 @@ ul.social-buttons li a:active {
   padding: 30px 15px 0 15px;
   font-size: 18px;
   line-height: 20px;
+  transition: all 0.3s;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -350,6 +364,7 @@ ul.social-buttons li a:active {
 }
 .navbar-default .navbar-nav > li > a {
   color: #000;
+  transition: all 0.3s;
 }
 .navbar-default .navbar-nav > li > a:active,
 .navbar-default .navbar-nav > li > a:hover,
@@ -373,6 +388,22 @@ ul.social-buttons li a:active {
     padding: 0 10px;
     text-decoration: none;
   }
+}
+.no_deco {
+  color: black;
+  text-decoration: none !important;
+  transition: all 0.3s;
+}
+.no_deco:hover {
+  color: #fed136;
+}
+.no_deco_white {
+  color: black;
+  text-decoration: none !important;
+  transition: all 0.3s;
+}
+.no_deco_white:hover {
+  color: white;
 }
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
