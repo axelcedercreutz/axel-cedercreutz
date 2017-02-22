@@ -107,6 +107,9 @@ article h3.section-subheading {
   max-width: 350px;
   border-radius: 4px;
 }
+.field {
+  width: 70%
+}
 ul.list-inline {
   margin-bottom: 100px;
   margin-top: 0;
@@ -215,6 +218,9 @@ ul.social-buttons li a:active {
   .navbar-nav > li > a {
     padding-top: 15px;
     padding-bottom: 15px;
+  }
+  .field {
+    width: 30%;
   }
 }
 @media (min-width: 992px) {
