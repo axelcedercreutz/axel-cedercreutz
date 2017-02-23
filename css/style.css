@@ -110,6 +110,15 @@ article h3.section-subheading {
 .field {
   width: 70%
 }
+.buttons-article button {
+  border-color: lightgray;
+  background-color: transparent;
+  border-radius: 5px;
+  text-transform: none;
+}
+.buttons-article button:hover {
+  background-color: #fed136;
+}
 ul.list-inline {
   margin-bottom: 100px;
   margin-top: 0;

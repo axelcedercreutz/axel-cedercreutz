@@ -20,15 +20,16 @@ function compareNumbers( first, second ) {
 function guessTheNumber() {
 
 	var guessedNumber = $('#question').val();
-	if(guessedNumber >= 0 && $('#question').val() <= 10) {
+	if(guessedNumber >= 1 && $('#question').val() <= 10) {
 		$('#submit-question').prop('disabled',true);
 		compareNumbers(guessedNumber,randomInteger);
+		$('#question').val('');
 		randomInteger = getRandomInteger(0,10);
 	}
 
 	else {
 		alert("You fool, you didn't enter a valid number!!! Try again");
-		guessedNumber = '';
+		$('#question').val('');
 		$('#submit-question').prop('disabled',false);
 	}
 }
