@@ -1,10 +1,3 @@
-//array for the articles
-var htmlTexts = [];
-//number of articles that come back
-var articleAmount = 0;
-//Id for the article
-var article_index = -1;
-
 $(document).ready(function(){
 	var loop;
     $.getJSON('https://project-8145367811882739054.firebaseio.com/.json',function(res){
@@ -13,6 +6,14 @@ $(document).ready(function(){
         addArticle(res.articles);
     })
 });
+
+//array for the articles
+var htmlTexts = [];
+//number of articles that come back
+var articleAmount = 0;
+//Id for the article
+var article_index = -1;
+
 // Function that adds the article to the correct div and starts the loop
 // with the returned articles
 function addArticle(data) {
@@ -36,8 +37,8 @@ function showArticle(index) {
 // and then fades in the next article
 
 //count 
+var count = 0;
 
-var count = 0
 function loopArticles() {
     console.log(article_index)
     console.log(articleAmount)
