@@ -41,14 +41,9 @@ function loopArticles() {
     console.log(article_index)
     console.log(articleAmount)
     if(count === 0) {
-        if(article_index == articleAmount - 1) {
-            article_index = 0;
-        }
-        else {
-            article_index ++;
-        }
         $('#newsArticle-'+article_index).fadeIn(2000);
         count ++;
+        article_index ++;
     };
     // console.log(count);
     loop = setInterval(function(){
