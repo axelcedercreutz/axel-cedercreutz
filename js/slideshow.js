@@ -17,7 +17,6 @@ var article_index = -1;
 function addArticle(data) {
 	for (var i = 0; i < data.length; i++) {
 		articleAmount = data.length;
-        console.log(data)
 		htmlTexts.push('<div class="col-xs-12" id="newsArticle-'+i+'"><h3 id="newsHead-'+i+'">'+data[i].text.title+'</h3><p id="newsTime-'+i+'">'+data[i].text.date+'</p><p id="newsText-'+i+'">'+data[i].text.article+'</p><h3 id="newsAuthor-'+i+'">Author: '+data[i].text.author+'</h3></div>');
 	}
 	$('#newsArticle').append(htmlTexts);
