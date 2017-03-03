@@ -1,5 +1,8 @@
 $(document).ready(function(){
-	$('#submit-question').click(guessTheNumber);
+	$('#submit-question').click(function(e){
+		e.preventDefault();
+		guessTheNumber();
+	});
 });
 var randomInteger = getRandomInteger(0,10);
 function getRandomInteger( min, max ) {
