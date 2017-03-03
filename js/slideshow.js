@@ -108,7 +108,8 @@ $('#previous').click('click',function(e) {
 //function that loads the last viewed article from local storage
 function loadSettings () {
     console.log(localStorage.articleNumber)
-    if(localStorage.articleNumber === NaN) {
+    if(localStorage.articleNumber == NaN) {
+        console.log("test");
         article_index = -1;
     }
     else {
