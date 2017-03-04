@@ -1,11 +1,12 @@
 $(document).ready(function(){
-	var loop;
     $.getJSON('https://project-8145367811882739054.firebaseio.com/.json',function(res){
         loadSettings();
         $(window).unload(saveSettings);
         addArticle(res.articles);
-    })
+    });
 });
+//variable for loop
+var loop;
 //array for the articles
 var htmlTexts = [];
 //number of articles that come back
@@ -20,7 +21,7 @@ function addArticle(data) {
 		htmlTexts.push('<div class="col-xs-12" id="newsArticle-'+i+'"><h3 id="newsHead-'+i+'">'+data[i].text.title+'</h3><p id="newsTime-'+i+'">'+data[i].text.date+'</p><p id="newsText-'+i+'">'+data[i].text.article+'</p><h3 id="newsAuthor-'+i+'">Author: '+data[i].text.author+'</h3></div>');
 	}
 	$('#newsArticle').append(htmlTexts);
-	for (var i = 0; i < data.length; i++) {
+	for (i = 0; i < data.length; i++) {
 		$('#newsArticle-' + i).hide();
 	}
 	loopArticles();
@@ -41,7 +42,7 @@ function loopArticles() {
         article_index ++;
         $('#newsArticle-'+article_index).fadeIn(2000);
         count ++;
-    };
+    }
     loop = setInterval(function(){
 		$('#newsArticle-' + (article_index)).hide();
         if(article_index == articleAmount - 1) {
@@ -52,7 +53,7 @@ function loopArticles() {
         }
         $('#newsArticle-'+article_index).fadeIn(2000);
 	},3000);
-};
+}
 //
 $('#start_stop').click('click', function(e) {
     var $this = $(this);
@@ -80,7 +81,7 @@ $('#next').click('click',function(e) {
         article_index ++;
     }
     $('#newsArticle-'+article_index).fadeIn(2000);
-})
+});
 
 $('#previous').click('click',function(e) {
     var $this = $(this);
@@ -88,7 +89,7 @@ $('#previous').click('click',function(e) {
     $('#start_stop').addClass('Play');
     $('#start_stop').text("Start");
     $('#newsArticle-' + (article_index)).hide();
-    if(article_index == 0) {
+    if(article_index === 0) {
             article_index = articleAmount - 1;
      }
     else {
@@ -107,7 +108,7 @@ function loadSettings () {
 }
 //function that saves the last seen article to local storage
 function saveSettings() {
-    if(localStorage.articleNumber !== NaN) {
+    if(localStorage.articleNumber.isNaN()) {
         localStorage.articleNumber = article_index - 1;
     }
 }
