@@ -4,6 +4,16 @@ $(document).ready(function(){
         loadSettings();
         addArticle(res.articles);
     });
+    //function that changes the article_index with +1 and calls for change article
+    $('#next').click('click',function(e) {
+        article_index ++;
+        changeArticle("next");
+    });
+    //function that changes the article_index with -1 and calls for change article
+    $('#previous').click('click',function(e) {
+        article_index --;
+        changeArticle("previous");
+    });
 });
 //variable for loop
 var loop;
@@ -88,17 +98,6 @@ function changeArticle(direction) {
      }
      $('#newsArticle-'+article_index).fadeIn(2000);
 }
-
-//function that changes the article_index with +1 and calls for change article
-$('#next').click('click',function(e) {
-    article_index ++;
-    changeArticle("next");
-});
-//function that changes the article_index with -1 and calls for change article
-$('#previous').click('click',function(e) {
-    article_index --;
-    changeArticle("previous");
-});
 //function that loads the last viewed article from local storage
 function loadSettings () {
     console.log(localStorage.articleNumber)
