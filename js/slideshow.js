@@ -106,12 +106,16 @@ function loadSettings () {
         article_index = -2;
     }
     else {
-        article_index = localStorage.articleNumber;
+        article_index = localStorage.articleNumber - 1;
     }
 }
 //function that saves the last seen article to local storage
 function saveSettings() {
-    if(localStorager.articleNumber.isNaN()) {
-        localStorage.articleNumber = article_index - 1;
+    console.log(localStorage.articleNumber)
+    if(localStorage.articleNumber !== NaN) {
+        localStorage.articleNumber = article_index;
+    }
+    else{
+        localStorage.articleNumber = -1;
     }
 }
