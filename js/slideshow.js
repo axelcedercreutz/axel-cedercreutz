@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $.getJSON('https://project-8145367811882739054.firebaseio.com/.json',function(res){
-        loadSettings();
         $(window).unload(saveSettings);
+        loadSettings();
         addArticle(res.articles);
     });
 });
@@ -37,7 +37,7 @@ function showArticle(index) {
 //count 
 var count = 0;
 //first checks if the loop has happened ever, if not fades in
-//the first article. Otherwise changes the artivle with 3s interval.
+//the first article. Otherwise changes the artivle with 3s interval
 function loopArticles() {
     if(count === 0) {
         article_index ++;
@@ -101,6 +101,7 @@ $('#previous').click('click',function(e) {
 });
 //function that loads the last viewed article from local storage
 function loadSettings () {
+    console.log(localStorage.articleNumber)
     if(localStorage.articleNumber === "NaN") {
         article_index = -2;
     }
@@ -110,7 +111,7 @@ function loadSettings () {
 }
 //function that saves the last seen article to local storage
 function saveSettings() {
-    if(localStorage.articleNumber.isNaN()) {
+    if(localStorager.articleNumber.isNaN()) {
         localStorage.articleNumber = article_index - 1;
     }
 }
