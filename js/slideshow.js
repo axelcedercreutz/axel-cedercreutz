@@ -36,7 +36,8 @@ function showArticle(index) {
 
 //count 
 var count = 0;
-
+//first checks if the loop has happened ever, if not fades in
+//the first article. Otherwise changes the artivle with 3s interval.
 function loopArticles() {
     if(count === 0) {
         article_index ++;
@@ -54,7 +55,7 @@ function loopArticles() {
         $('#newsArticle-'+article_index).fadeIn(2000);
 	},3000);
 }
-//
+//changes the stop button & toggles the loop
 $('#start_stop').click('click', function(e) {
     var $this = $(this);
     $this.toggleClass('Play');
@@ -67,35 +68,36 @@ $('#start_stop').click('click', function(e) {
         $this.text("Stop");
     }
 });
-
-$('#next').click('click',function(e) {
-    var $this = $(this);
+//takes as a parameter what direction it is supposed to change
+//the Article. Hides the old article first and then fades in the new one.
+function changeArticle(direction) {
     clearInterval(loop);
     $('#start_stop').addClass('Play');
     $('#start_stop').text("Start");
-    $('#newsArticle-' + (article_index)).hide();
-    if(article_index == articleAmount - 1) {
-            article_index = 0;
-     }
-    else {
-        article_index ++;
+    if(direction === "previous") {
+        $('#newsArticle-' + (article_index + 1)).hide();
     }
-    $('#newsArticle-'+article_index).fadeIn(2000);
-});
-
-$('#previous').click('click',function(e) {
-    var $this = $(this);
-    clearInterval(loop);
-    $('#start_stop').addClass('Play');
-    $('#start_stop').text("Start");
-    $('#newsArticle-' + (article_index)).hide();
-    if(article_index === 0) {
+    else {
+        $('#newsArticle-' + (article_index - 1)).hide();
+    }
+    if(article_index < 0) {
             article_index = articleAmount - 1;
      }
-    else {
-        article_index --;
-    }
-    $('#newsArticle-'+article_index).fadeIn(2000);
+     else if(article_index >= articleAmount) {
+        article_index = 0;
+     }
+     $('#newsArticle-'+article_index).fadeIn(2000);
+}
+
+//function that changes the article_index with +1 and calls for change article
+$('#next').click('click',function(e) {
+    article_index ++;
+    changeArticle("next");
+});
+//function that changes the article_index with -1 and calls for change article
+$('#previous').click('click',function(e) {
+    article_index --;
+    changeArticle("previous");
 });
 //function that loads the last viewed article from local storage
 function loadSettings () {
