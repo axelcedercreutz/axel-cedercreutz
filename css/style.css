@@ -113,7 +113,7 @@ article h3.section-subheading {
   text-transform: none;
 }
 .video {
-  max-width: 560px;
+  max-width: 360px;
   height: 315px;
 }
 .img {
@@ -188,7 +188,7 @@ ul.social-buttons li a:active {
     width: 750px;
   }
   .video {
-    width: 560px;
+    max-width: 560px;
   }
   .img {
     max-width: 100%;
