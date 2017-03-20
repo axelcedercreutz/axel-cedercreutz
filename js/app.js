@@ -78,7 +78,7 @@ function draw(v,c,bc,cw,ch) {
     // Start over!
     setTimeout(draw,20,v,c,bc,cw,ch);
     }
-}
+});
 
 $('button.black-white').click('click', function(e) {
     function draw(v,c,bc,w,h) {
@@ -105,4 +105,4 @@ $('button.black-white').click('click', function(e) {
         // Start over!
         setTimeout(function(){ draw(v,c,bc,w,h); }, 0);
     }
-}
+});
