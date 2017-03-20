@@ -48,7 +48,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
     v.addEventListener('play', function(){
         cw = v.clientWidth;
+        console.log(cw);
         ch = v.clientHeight;
+        console.log(ch);
         canvas.width = cw;
         canvas.height = ch;
         back.width = cw;
@@ -59,12 +61,14 @@ document.addEventListener('DOMContentLoaded', function(){
 },false);
 
 function draw(v,c,bc,w,h) {
+    console.log("testing");
     if(v.paused || v.ended) return false;
     // First, draw it into the backing canvas
     bc.drawImage(v,0,0,w,h);
     // Grab the pixel data from the backing canvas
     var idata = bc.getImageData(0,0,w,h);
     var data = idata.data;
+    console.length(data);
     // Loop through the pixels, turning them grayscale
     for(var i = 0; i < data.length; i+=4) {
         var r = data[i];
