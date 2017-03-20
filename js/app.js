@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function(){
     var cw,ch;
 
     v.addEventListener('play', function(){
-        v.hide()
         cw = v.clientWidth;
         ch = v.clientHeight;
         canvas.width = cw;
