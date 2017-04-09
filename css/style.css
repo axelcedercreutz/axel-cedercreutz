@@ -66,6 +66,16 @@ article h3.section-subheading {
   font-weight: 400;
   margin-bottom: 75px;
 }
+.game-section {
+  padding-bottom: 20px;
+}
+#canvas {
+  background-image: url("../assets/water-background.jpg");
+  background-size: cover;
+  height: 600px;
+  background-repeat: none;
+  margin: 0 auto;
+}
 .mainHead {
   margin-top: 100px;
   font-size: 6em;
