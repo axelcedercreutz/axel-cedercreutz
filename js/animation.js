@@ -202,13 +202,25 @@ $(document).ready( function(){
 		var count = 0;
 	    // cache <tbody> element:
 	    var tbody = $('#tableBody');
-	    for (var i = 0; i < 10; i++) {
-	        // create an <tr> element, append it to the <tbody> and cache it as a variable:
-	        var tr = $('<tr/>').appendTo(tbody);
-            // append <td> elements to previously created <tr> element:
-            	tr.append('<td>' + array[i][0] + '</td>');
-            	tr.append('<td>' + array[i][1] + '</td>');
-            count++;
+	    if(array.length >= 10) {
+	    	for (var i = 0; i < 10; i++) {
+		        // create an <tr> element, append it to the <tbody> and cache it as a variable:
+		        var tr = $('<tr/>').appendTo(tbody);
+	            // append <td> elements to previously created <tr> element:
+	            	tr.append('<td>' + array[i][0] + '</td>');
+	            	tr.append('<td>' + array[i][1] + '</td>');
+	            count++;
+	    	}
+	    }
+	    else {
+	    	for (var i = 0; i < array.length; i++) {
+		        // create an <tr> element, append it to the <tbody> and cache it as a variable:
+		        var tr = $('<tr/>').appendTo(tbody);
+	            // append <td> elements to previously created <tr> element:
+	            	tr.append('<td>' + array[i][0] + '</td>');
+	            	tr.append('<td>' + array[i][1] + '</td>');
+	            count++;
+	    	}
 	    }
 	    // reset the count:
 	    count = 0;
