@@ -93,8 +93,8 @@ function collisionDetection(enemy, number) {
 	for (var i = 0; i < enemies.length; i++) {
 		if(i === number) {
 		}
-		else if(enemy.x + enemy.w >= player.x - (player.w/2) && enemy.x <= player.x + (player.w/2) &&
-				enemy.y + enemy.h >= player.y - (player.h /2) && enemy.y <= player.y + (player.h/2)) {
+		else if(enemy.x + enemy.w >= player.x - player.w && enemy.x <= player.x + player.w &&
+				enemy.y + enemy.h >= player.y - player.h && enemy.y <= player.y + player.h) {
 
 			if (player.life > 0) {
 				player.life -= 1;
