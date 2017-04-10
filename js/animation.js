@@ -1,27 +1,45 @@
 $(document).ready( function(){
-	$(window).unload(saveSettings);
+	//array for highscore names
+	var names = [];
+	//array for highscore scores
+	var scores = [];
+	//object for names-scores
+	var bothNameScore = {};
+	//load from localStorage
     loadSettings();
+    //creating the canvas
 	var canvas = document.createElement('canvas');
+	//giving the canvas a id
 	canvas.setAttribute("id","canvas");
+	//giving the context
 	var ctx = canvas.getContext("2d");
+	//setting canvas width
 	canvas.width = 800;
+	//setting canvas height
 	canvas.height = 600;
+	//adding the canvas to the body
 	document.body.appendChild(canvas);
 
+	//object for keycodes
 	var keysDown = {};
+	//the buttons in the navigation bar
 	var buttonsNav = [];
+	//the restart button
 	var buttons = [];
-	var names = [];
-	var scores = [];
 
+	//eventlistener for keydown. Adds the keycode to keysDown-object
 	window.addEventListener('keydown', function(e) {
 		e.preventDefault();
 		keysDown[e.keyCode] = true;
-	})
+	});
+
+	//eventlistener for keydup. Deletes the keycode from keysDown-object
 	window.addEventListener('keyup', function(e) {
 		e.preventDefault();
 		delete keysDown[e.keyCode];
-	})
+	});
+
+	//eventlistener for mousedown. both for deleting enemy and changing the player speed
 	$( "#canvas" ).mousedown(function(e) {
   		var X = e.clientX - 97;
   		var Y = e.clientY - 132;
@@ -39,39 +57,43 @@ $(document).ready( function(){
     		changeSpeed("less");
     	}
 	});
-	$("#faster").click('click',function(e) {
-		changeSpeed("add");
-	});
 
-	$("#slower").click('click',function(e) {
-		changeSpeed("less");
-	});
+	//when the reset-button is clicked it resets 
 	$("#reset").click('click',function(e) {
 		reset(ctx);
 	});
 
+	//where button 1 is located
 	var button1 = {
 	    x:300,
 	    y:320,
 	    w:200,
 	    h:50
 	};
+
+	//where button 2 is located
 	var button2 = {
 	    x:600,
 	    y:0,
 	    w:100,
 	    h:50
 	};
+
+	//where button 3 is located
 	var button3 = {
 	    x:700,
 	    y:0,
 	    w:100,
 	    h:50
 	};
+	//pushing button 1 to the buttons array
 	buttons.push(button1);
+	//pushing button 2 & 3 to the array for nav buttons
 	buttonsNav.push(button2);
 	buttonsNav.push(button3);
 
+
+	//drawing the buttons to the canvas. If reset-button writes reset and so on..
 	function drawButtons(array) {
 		for (var i = 0; i < array.length; i++) {
 			ctx.fillStyle = "#434342";
@@ -93,9 +115,11 @@ $(document).ready( function(){
 			}
 		}
 	}
+	//checks if inside a the reset-button
 	function isInside(width,height){
     	return width > button1.x && width < button1.x + button1.w && height < button1.y+button1.h && height > button1.y
 	}
+	//checks if inside nav-bar and with navbar button its within
 	function isInsideNav(width,height,array){
 		for (var i = 0; i < array.length; i++) {
 			if(width > array[i].x && width < array[i].x + array[i].w && height < array[i].y+array[i].h && height > array[i].y) {
@@ -103,6 +127,7 @@ $(document).ready( function(){
 			}
 		}
 	}
+	//rendering the canvas. Adds the count and every 60th frame it adds a enemy. Draws the player, the enemies and the buttons
 	var render = function() {
 		frameNo += 1;
 		ctx.clearRect(0 , 0 , canvas.width , canvas.height);
@@ -117,6 +142,7 @@ $(document).ready( function(){
 		ctx.fillText("Score: " + frameNo,20,30);
 		ctx.fillText("Health: " + player.life,20,60);
 	};
+	//draws the gameover screen
 	function drawGameOver() {
 		ctx.clearRect(0 , 0 , canvas.width , canvas.height);
 		ctx.fillStyle = '#000000';
@@ -127,38 +153,67 @@ $(document).ready( function(){
 		drawButtons(buttonsNav);
 		drawButtons(buttons);
 		if(countGameOver === 0) {
+			//makes you add your name to the scoreboard
 			var name = prompt("Add your name to your score to the scoreboard!", "");
 			names.push(name);
 			scores.push(frameNo);
+			localStorage.setItem("names", JSON.stringify(names));
+			localStorage.setItem("scores", JSON.stringify(scores));
 		}
+		//adds to the counter so that the prompt wont be popping up constantly
 		countGameOver ++;
+		//empties the keysDown-object so that the player wont start moving to a direction
+		keysDown = {};
 	};
+	//loading the names & scores from localStorage, then 
 	function loadSettings () {
-		 console.log(localStorage);
-		// console.log(localStorage.scores);
-		// if(localStorage.names !== undefined) {
-  //       	// for (var i = 0; i < localStorage.names.length; i++) {
-	 //    		names = JSON.parse(localStorage.getItem("names"));
-	 //    	// }
-	 //    	// for (var i = 0; i < localStorage.scores.length; i++) {
-	 //    		scores = JSON.parse(localStorage.getItem("scores"));
-	 //    	// }
-  //   	}
-	}
-	function saveSettings() {
-	    // if(gameOver) {
-	    // 	for (var i = 0; i < names.length; i++) {
-	    // 	localStorage.names += JSON.stringify(names[i])
-	    // 	}
-	    // 	for (var i = 0; i < scores.length; i++) {
-	    // 		localStorage.scores += JSON.stringify(scores[i]);
-	    // 		}
-	    // 	}
+		if(localStorage.names !== undefined && localStorage.scores !== undefined) {
+			var returnedNames = (JSON.parse(localStorage.names));
+			var returnedScores = (JSON.parse(localStorage.scores));
+			
+			console.log(returnedNames);
+			console.log(returnedScores);
+			var newSomething = [];
+        	for (var i = 0; i < returnedNames.length; i++) {
+	    		names.push(returnedNames[i]);
+	    		scores.push(returnedScores[i]);
+	    	}
+	    	var bothNameScore = toObject(names,scores);
+	    	var sortable = [];
+			for (var name in bothNameScore) {
+			    sortable.push([name, bothNameScore[name]]);
+			}
+			sortable.sort(function(a, b) {
+			    return b[1] - a[1];
+			});
+	    	writeTable(sortable);
 	    }
-	    // if(!gameOver) {
-	    // 	names = JSON.parse(localStorage.getItem("names"));
-     //    	scores = JSON.parse(localStorage.getItem("scores"));
-	    // }
+	}
+
+    function toObject(names, values) {
+    	var result = {};
+	    for (var i = 0; i < names.length; i++) {
+	         result[names[i]] = values[i];
+		}
+		return result;
+	}
+
+	function writeTable(array) {
+		var count = 0;
+	    // cache <tbody> element:
+	    var tbody = $('#tableBody');
+	    for (var i = 0; i < 10; i++) {
+	        // create an <tr> element, append it to the <tbody> and cache it as a variable:
+	        var tr = $('<tr/>').appendTo(tbody);
+            // append <td> elements to previously created <tr> element:
+            	tr.append('<td>' + array[i][0] + '</td>');
+            	tr.append('<td>' + array[i][1] + '</td>');
+            count++;
+	    }
+	    // reset the count:
+	    count = 0;
+	}
+	//moves the enemies and checks if the player should move. If it should it checks which direction it's going to and what kind of sprite it should then use
 	function update() {
 		moveEnemies(ctx);
 		if(38 in keysDown) {
@@ -188,7 +243,7 @@ $(document).ready( function(){
 			drawPlayerMove(ctx);
 		}
 	}
-
+	//function that runs endlessly
 	function main() {
 		if(!gameOver) {
 			update();

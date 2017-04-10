@@ -1,6 +1,10 @@
+//checks if going to the left
 var left = false;
+//checks if going to the right
 var right = false;
+//checks if game has already been over
 var countGameOver = 0;
+//create an object player that has a function for updating the sprite
 var player = {
 		x: 400,
 		y: 300,
@@ -27,11 +31,13 @@ var player = {
 	 		ctx.clearRect(player.x,player.y,spriteWidthOneGood,spriteHeightOneGood); 
 		}
 };
-
+//sprite width
 var spriteWidthGood = 188;
+//sprite height
 var spriteHeightGood = 74;
-
-var rows = 2; 
+//sprite row
+var rows = 2;
+//sprite column 
 var cols = 5;
 
 //To get the width of a single sprite we divided the width of sprite with the number of cols
@@ -65,6 +71,8 @@ function drawPlayer(context) {
 	playerCharacter.src = "../assets/good_fish.png";
 	context.drawImage(playerCharacter,srcX,srcY,spriteWidthOneGood,spriteHeightOneGood,x,y,spriteWidthOneGood,spriteHeightOneGood);
 }
+
+//draws a player
 function drawPlayerMove(context) {
 	//Creating an Image object for our character 
  	var playerCharacter = new Image(); 
@@ -75,6 +83,8 @@ function drawPlayerMove(context) {
 	playerCharacter.src = "../assets/good_fish.png";
 	context.drawImage(playerCharacter,srcX,srcY,spriteWidthOneGood,spriteHeightOneGood,x,y,spriteWidthOneGood,spriteHeightOneGood);
 }
+
+//moves player & checks that it doesnt go out of bounds
 function movePlayer(direction) {
 	switch (direction) {
 		case "left":
@@ -107,6 +117,7 @@ function movePlayer(direction) {
 			break;
 	}
 }
+//changes the speed of the player
 function changeSpeed(amount) {
 	switch(amount) {
 		case "add":
@@ -127,6 +138,8 @@ function changeSpeed(amount) {
 			break;
 	}
 }
+//resets the player stats (position, speed, life). turns gameOver to false, clears the enemies and creates 4 new ones.
+//Changes countGameOver so that the prompt for adding your score pops up when you die the next time.
 function reset(context) {
 	player.x = 400;
 	player.y = 275;

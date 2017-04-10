@@ -1,5 +1,8 @@
+//array for all enemies
 var enemies = [];
+//if true, you've died
 var gameOver = false;
+//for counting the frames (score)
 var frameNo = 0;
 //Each row contains 5 frame and at start we will display the first frame (assuming the index from 0)
 var curFrameBad = 0; 
@@ -7,14 +10,16 @@ var curFrameBad = 0;
 //The total frame is 5 
 var frameCountBad = 5;
 
-//x and y coordinates to render the sprite 
+//x and y coordinates to render the sprite
 //sprite width
 var spriteWidthBad = 215;
+
 //sprite height
 var spriteHeightBad = 82;
 
-
+//how many sprite rows
 var rowsBad = 2; 
+//how many sprite columns
 var colsBad = 5;
 
 //To get the width of a single sprite we divided the width of sprite with the number of cols
@@ -24,10 +29,9 @@ var spriteWidthOneBad = spriteWidthBad/colsBad;
 //Same for the height we divided the height with number of rows 
 var spriteHeightOneBad = spriteHeightBad/rowsBad;  
 
-//x and y coordinates of the canvas to get the single frame 
-// var srcXBad = 0; 
-// var srcYBad = 0;
-
+//creating a enemy. First randomly choosing the placement, speed and direction for the enemy,
+//then defining the enemy object. Adding a counter to see if the the created enemy goes on top of the already created enemies.
+//if created enemy is not on top of any of the enemies, the enemy gets pushed to the array of enemies, otherwise there will be created a new one.
 function create(amount) {
 	for (var i = 0; i < amount; i++) {
 		var x = Math.ceil(Math.random() * 760);
@@ -67,10 +71,11 @@ function create(amount) {
 }
 
 //initially creating 4 enemies
-create(20); 
+create(4); 
 
+//function to draw a new enemy. Takes as parameter a specific enemy and the context that it's in.
+//First defines the position for the character, getting the sourse for the charactes and then drawing it.
 function drawEnemy(enemy,context) {
-	// for (var i = 0; i < enemies.length; i++) { 
 
 		var enemyCharacter = new Image(); 
 
@@ -79,9 +84,10 @@ function drawEnemy(enemy,context) {
 		// Load sprite sheet
 		enemyCharacter.src = "../assets/bad_fish.png";
 		context.drawImage(enemyCharacter,srcXBad,enemy.srcYBad,spriteWidthOneBad,spriteHeightOneBad,x,y,spriteWidthOneBad,spriteHeightOneBad);
-	// }
 }
 
+//checking if a enemy collides with another or the player. also checks that if it's trying to check for itself it will disregard it.
+//if there's a collision it will return true, else false.
 function collisionDetection(enemy, number) {
 	var collisionTrue = false;
 	for (var i = 0; i < enemies.length; i++) {
@@ -90,14 +96,14 @@ function collisionDetection(enemy, number) {
 		else if(enemy.x + enemy.w >= player.x - (player.w/2) && enemy.x <= player.x + (player.w/2) &&
 				enemy.y + enemy.h >= player.y - (player.h /2) && enemy.y <= player.y + (player.h/2)) {
 
-			if (player.life > 1) {
+			if (player.life > 0) {
 				player.life -= 1;
 			}
 			else {
 				gameOver = true;
 			}
 		}
-		else if((enemy.x + enemy.w >= enemies[i].x && enemy.x <= enemies[i].x + enemies[i].w &&
+		else  if((enemy.x + enemy.w >= enemies[i].x && enemy.x <= enemies[i].x + enemies[i].w &&
 					enemy.y + enemy.h >= enemies[i].y && enemy.y <= enemies[i].y + enemies[i].h)) {
 			collisionTrue = true;
 		}
@@ -110,23 +116,27 @@ function collisionDetection(enemy, number) {
 		return collisionTrue;
 	}
 }
+
+//updates the view. takes as a parameter the context and a number for the enemy
 function updateFrame(ctx,i){
  	//Updating the frame index 
  	curFrameBad = ++curFrameBad % frameCountBad; 
  
  	//Calculating the x coordinate for spritesheet 
 	srcXBad = curFrameBad * spriteWidthOneBad; 
-
+	//if going to the left it will take the first row
 	if(enemies[i].direction === 1) {
 		//calculate srcY 
 		enemies[i].srcYBad = 0; 
 	}
 	else {
+		//if any other it will take the second row
 		enemies[i].srcYBad = spriteHeightOneBad;
 	}
 	//Clearing the drawn frame 
 	ctx.clearRect(enemies[i].x,enemies[i].y,spriteWidthOneBad,spriteHeightOneBad);
 }
+//moving all the enemies. this one is called in the animation.js. uses three other methods to actually do stuff
 function moveEnemies(ctx) {
 	for(var i = 0; i < enemies.length; i++) {
 		move(enemies[i],i,ctx);
@@ -134,6 +144,7 @@ function moveEnemies(ctx) {
 		drawEnemy(enemies[i],ctx);
 	}
 }
+//moves the enemy and defines its next direction
 function move(enemy, i, ctx) {
 	switch (enemy.direction) {
 		case 1:
@@ -150,7 +161,7 @@ function move(enemy, i, ctx) {
 			srcYBad = spriteHeightOneBad;
 			enemy.direction = 2;
 			enemy.x += enemy.speed;
-			if(collisionDetection(enemy,i) == true){
+			if(collisionDetection(enemy,i)){
 				enemy.direction = 1;
 			}
 			if(enemy.x >= 760) {
@@ -160,7 +171,7 @@ function move(enemy, i, ctx) {
 		case 3:
 			enemy.direction = 3;
 			enemy.y -= enemy.speed;
-			if(collisionDetection(enemy,i) == true){
+			if(collisionDetection(enemy,i)){
 				enemy.direction = 4;
 			}
 			if(enemy.y <= 80) {
@@ -170,7 +181,7 @@ function move(enemy, i, ctx) {
 		case 4:
 			enemy.direction = 4;
 			enemy.y += enemy.speed
-			if(collisionDetection(enemy,i) == true){
+			if(collisionDetection(enemy,i)){
 				enemy.direction = 3;
 			}
 			if(enemy.y >= 560) {
@@ -179,6 +190,7 @@ function move(enemy, i, ctx) {
 			break;
 	}
 }
+//checks if the mouse hits an enemy, if it does it kills the enemy, adds points and health (if life < 100)
 function deleteEnemy(width,height) {
 	//looping through all enemies
 	for (var i = 0; i < enemies.length; i++) {

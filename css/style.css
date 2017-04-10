@@ -42,6 +42,7 @@ header {
   background-position: center center;
   background-image: url(../assets/background_header.jpg)
 }
+
 footer {
   line-height: 40px;
   padding: 30px 0;
@@ -177,6 +178,9 @@ ul.social-buttons li a:active {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+table {
+  margin: 0 auto;
 }
 @media (max-device-width: 480px) and (orientation: landscape) {
   .navbar-fixed-top .navbar-collapse {
