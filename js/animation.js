@@ -41,7 +41,8 @@ $(document).ready( function(){
 
 	//eventlistener for mousedown. both for deleting enemy and changing the player speed
 	$( "#canvas" ).mousedown(function(e) {
-  		var X = e.clientX - 97;
+		console.log(e.pageX);
+  		var X = e.pageX - 320;
   		var Y = e.clientY - 132;
   		deleteEnemy(X,Y);
   		if(gameOver) {
