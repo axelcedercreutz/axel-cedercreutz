@@ -161,6 +161,7 @@ $(document).ready( function(){
 			scores.push(frameNo);
 			localStorage.setItem("names", JSON.stringify(names));
 			localStorage.setItem("scores", JSON.stringify(scores));
+			loadSettings();
 		}
 		//adds to the counter so that the prompt wont be popping up constantly
 		countGameOver ++;
@@ -204,6 +205,7 @@ $(document).ready( function(){
 		var count = 0;
 	    // cache <tbody> element:
 	    var tbody = $('#tableBody');
+	    tbody.empty();
 	    if(array.length >= 10) {
 	    	for (var i = 0; i < 10; i++) {
 		        // create an <tr> element, append it to the <tbody> and cache it as a variable:
