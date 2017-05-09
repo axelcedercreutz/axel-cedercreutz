@@ -145,6 +145,16 @@ article h3.section-subheading {
 .buttons-article button:hover {
   background-color: #fed136;
 }
+#highscore-button {
+  margin-top: 2vh;
+  border-color: lightgray;
+  background-color: transparent;
+  border-radius: 5px;
+  text-transform: none;
+}
+#highscore-button:hover {
+  background-color: #fed136;
+}
 ul.list-inline {
   margin-bottom: 100px;
   margin-top: 0;
