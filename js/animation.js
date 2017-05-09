@@ -173,9 +173,6 @@ $(document).ready( function(){
 		if(localStorage.names !== undefined && localStorage.scores !== undefined) {
 			var returnedNames = (JSON.parse(localStorage.names));
 			var returnedScores = (JSON.parse(localStorage.scores));
-			
-			console.log(returnedNames);
-			console.log(returnedScores);
 			var newSomething = [];
         	for (var i = 0; i < returnedNames.length; i++) {
 	    		names.push(returnedNames[i]);
@@ -186,9 +183,11 @@ $(document).ready( function(){
 			for (var name in bothNameScore) {
 			    sortable.push([name, bothNameScore[name]]);
 			}
+			console.log(sortable);
 			sortable.sort(function(a, b) {
 			    return b[1] - a[1];
 			});
+			console.log(sortable);
 	    	writeTable(sortable);
 	    }
 	}
