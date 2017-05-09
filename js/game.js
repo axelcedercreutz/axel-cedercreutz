@@ -672,7 +672,7 @@ function gameOver() {
     button = game.add.button(game.world.centerX - 110, 400, 'playbutton', reset, this, 0, 0, 0);
     button2 = game.add.button(game.world.centerX - 110, 500, 'menubutton', back, this, 0, 0, 0);
     gameMenu = !gameMenu;
-    var name = prompt("Add your name to your score to the scoreboard!", "");
+    var name = prompt("Add your name to your score to the scoreboard! \n Your score was: " + score, "");
     var newChildRef = ref.push();
     newChildRef.set({
         name: name,
