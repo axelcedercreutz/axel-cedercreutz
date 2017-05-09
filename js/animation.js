@@ -204,9 +204,11 @@ $(document).ready( function(){
 		var count = 0;
 	    // cache <tbody> element:
 	    var tbody = $('#tableBody');
+	    console.log(tbody);
 	    tbody.empty();
 	    if(array.length >= 10) {
 	    	for (var i = 0; i < 10; i++) {
+	    		console.log("testing");
 		        // create an <tr> element, append it to the <tbody> and cache it as a variable:
 		        var tr = $('<tr/>').appendTo(tbody);
 	            // append <td> elements to previously created <tr> element:

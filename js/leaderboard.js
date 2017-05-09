@@ -6,7 +6,7 @@ var array = [];
 $(document).ready(function(){
     getData();
     $('#highscore-button').click('click', function(e) {
-        $('.game-section').toggle();
+        $('#game-section').toggle();
     });
 });
 // function that get's the data from the database as a json, maps it an sorts it by its value.
