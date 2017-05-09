@@ -5,33 +5,33 @@ var leaderboard = [];
 function preload() {
 
     // all sprites for players, buttons, backgrounds and logo
-    game.load.spritesheet('player', 'assets/images/fish-sprite.png', 80, 80, 8);
-    game.load.spritesheet('rock', 'assets/images/rock-sprite.png', 80, 80);
-    game.load.spritesheet('cannon', 'assets/images/cannon.png', 80, 80);
-    game.load.spritesheet('playbutton', 'assets/images/playbutton.png', 220, 90, 2);
-    game.load.spritesheet('menubutton', 'assets/images/menubutton.png', 220, 90, 2);
-    game.load.spritesheet('infobutton', 'assets/images/infobutton.png', 220, 90, 2);
-    game.load.spritesheet('startscreen','assets/images/startscreen.jpg',600,400);
-    game.load.spritesheet('river','assets/images/river.jpg',600,400);
-    game.load.spritesheet('logo', 'assets/images/logo.png', 300, 270);
+    game.load.spritesheet('player', '../assets/images/fish-sprite.png', 80, 80, 8);
+    game.load.spritesheet('rock', '../assets/images/rock-sprite.png', 80, 80);
+    game.load.spritesheet('cannon', '../assets/images/cannon.png', 80, 80);
+    game.load.spritesheet('playbutton', '../assets/images/playbutton.png', 220, 90, 2);
+    game.load.spritesheet('menubutton', '../assets/images/menubutton.png', 220, 90, 2);
+    game.load.spritesheet('infobutton', '../assets/images/infobutton.png', 220, 90, 2);
+    game.load.spritesheet('startscreen','../assets/images/startscreen.jpg',600,400);
+    game.load.spritesheet('river','../assets/images/river.jpg',600,400);
+    game.load.spritesheet('logo', '../assets/images/logo.png', 300, 270);
     
     // all sprites for the health bar
-    game.load.spritesheet('health10', 'assets/images/health10.png', 50, 170);
-    game.load.spritesheet('health20', 'assets/images/health20.png', 50, 170);
-    game.load.spritesheet('health30', 'assets/images/health30.png', 50, 170);
-    game.load.spritesheet('health40', 'assets/images/health40.png', 50, 170);
-    game.load.spritesheet('health50', 'assets/images/health50.png', 50, 170);
-    game.load.spritesheet('health60', 'assets/images/health60.png', 50, 170);
-    game.load.spritesheet('health70', 'assets/images/health70.png', 50, 170);
-    game.load.spritesheet('health80', 'assets/images/health80.png', 50, 170);
-    game.load.spritesheet('health90', 'assets/images/health90.png', 50, 170);
-    game.load.spritesheet('health100', 'assets/images/health100.png', 50, 170);
+    game.load.spritesheet('health10', '../assets/images/health10.png', 50, 170);
+    game.load.spritesheet('health20', '../assets/images/health20.png', 50, 170);
+    game.load.spritesheet('health30', '../assets/images/health30.png', 50, 170);
+    game.load.spritesheet('health40', '../assets/images/health40.png', 50, 170);
+    game.load.spritesheet('health50', '../assets/images/health50.png', 50, 170);
+    game.load.spritesheet('health60', '../assets/images/health60.png', 50, 170);
+    game.load.spritesheet('health70', '../assets/images/health70.png', 50, 170);
+    game.load.spritesheet('health80', '../assets/images/health80.png', 50, 170);
+    game.load.spritesheet('health90', '../assets/images/health90.png', 50, 170);
+    game.load.spritesheet('health100', '../assets/images/health100.png', 50, 170);
     
     //all audio files
-    game.load.audio('killsound', 'assets/audio/killsound.wav');
-    game.load.audio('splashsound', 'assets/audio/splashsound.wav');
-    game.load.audio('clicksound', 'assets/audio/clicksound.wav');
-    game.load.audio('cannonsound', 'assets/audio/cannonsound.wav');
+    game.load.audio('killsound', '../assets/audio/killsound.wav');
+    game.load.audio('splashsound', '../assets/audio/splashsound.wav');
+    game.load.audio('clicksound', '../assets/audio/clicksound.wav');
+    game.load.audio('cannonsound', '../assets/audio/cannonsound.wav');
 }
 
 // first menu site variables
