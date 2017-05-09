@@ -5,33 +5,33 @@ var leaderboard = [];
 function preload() {
 
     // all sprites for players, buttons, backgrounds and logo
-    game.load.spritesheet('player', '../assets/images/fish-sprite.png', 80, 80, 8);
-    game.load.spritesheet('rock', '../assets/images/rock-sprite.png', 80, 80);
-    game.load.spritesheet('cannon', '../assets/images/cannon.png', 80, 80);
-    game.load.spritesheet('playbutton', '../assets/images/playbutton.png', 220, 90, 2);
-    game.load.spritesheet('menubutton', '../assets/images/menubutton.png', 220, 90, 2);
-    game.load.spritesheet('infobutton', '../assets/images/infobutton.png', 220, 90, 2);
-    game.load.spritesheet('startscreen','../assets/images/startscreen.jpg',600,400);
-    game.load.spritesheet('river','../assets/images/river.jpg',600,400);
-    game.load.spritesheet('logo', '../assets/images/logo.png', 300, 270);
+    game.load.spritesheet('player', 'assets/images/fish-sprite.png', 80, 80, 8);
+    game.load.spritesheet('rock', 'assets/images/rock-sprite.png', 80, 80);
+    game.load.spritesheet('cannon', 'assets/images/cannon.png', 80, 80);
+    game.load.spritesheet('playbutton', 'assets/images/playbutton.png', 220, 90, 2);
+    game.load.spritesheet('menubutton', 'assets/images/menubutton.png', 220, 90, 2);
+    game.load.spritesheet('infobutton', 'assets/images/infobutton.png', 220, 90, 2);
+    game.load.spritesheet('startscreen','assets/images/startscreen.jpg',600,400);
+    game.load.spritesheet('river','assets/images/river.jpg',600,400);
+    game.load.spritesheet('logo', 'assets/images/logo.png', 300, 270);
     
     // all sprites for the health bar
-    game.load.spritesheet('health10', '../assets/images/health10.png', 50, 170);
-    game.load.spritesheet('health20', '../assets/images/health20.png', 50, 170);
-    game.load.spritesheet('health30', '../assets/images/health30.png', 50, 170);
-    game.load.spritesheet('health40', '../assets/images/health40.png', 50, 170);
-    game.load.spritesheet('health50', '../assets/images/health50.png', 50, 170);
-    game.load.spritesheet('health60', '../assets/images/health60.png', 50, 170);
-    game.load.spritesheet('health70', '../assets/images/health70.png', 50, 170);
-    game.load.spritesheet('health80', '../assets/images/health80.png', 50, 170);
-    game.load.spritesheet('health90', '../assets/images/health90.png', 50, 170);
-    game.load.spritesheet('health100', '../assets/images/health100.png', 50, 170);
+    game.load.spritesheet('health10', 'assets/images/health10.png', 50, 170);
+    game.load.spritesheet('health20', 'assets/images/health20.png', 50, 170);
+    game.load.spritesheet('health30', 'assets/images/health30.png', 50, 170);
+    game.load.spritesheet('health40', 'assets/images/health40.png', 50, 170);
+    game.load.spritesheet('health50', 'assets/images/health50.png', 50, 170);
+    game.load.spritesheet('health60', 'assets/images/health60.png', 50, 170);
+    game.load.spritesheet('health70', 'assets/images/health70.png', 50, 170);
+    game.load.spritesheet('health80', 'assets/images/health80.png', 50, 170);
+    game.load.spritesheet('health90', 'assets/images/health90.png', 50, 170);
+    game.load.spritesheet('health100', 'assets/images/health100.png', 50, 170);
     
     //all audio files
-    game.load.audio('killsound', '../assets/audio/killsound.wav');
-    game.load.audio('splashsound', '../assets/audio/splashsound.wav');
-    game.load.audio('clicksound', '../assets/audio/clicksound.wav');
-    game.load.audio('cannonsound', '../assets/audio/cannonsound.wav');
+    game.load.audio('killsound', 'assets/audio/killsound.wav');
+    game.load.audio('splashsound', 'assets/audio/splashsound.wav');
+    game.load.audio('clicksound', 'assets/audio/clicksound.wav');
+    game.load.audio('cannonsound', 'assets/audio/cannonsound.wav');
 }
 
 // first menu site variables
@@ -618,11 +618,11 @@ function startGame() {
     if(button !== undefined) {
         button.kill();
     };
-    button = game.add.button(game.world.centerX - 105, 350, 'playbutton', start, this, 1, 2, 0); 
+    button = game.add.button(game.world.centerX - 105, 350, 'playbutton', start, this, 1, 0, 1); 
     if(button2 !== undefined) {
         button2.kill();
     };
-    button2 = game.add.button(game.world.centerX - 105, 450, 'infobutton', instruction, this, 1, 2, 0);
+    button2 = game.add.button(game.world.centerX - 105, 450, 'infobutton', instruction, this, 1, 0, 1);
 };
 
 // What is shown in the instructions-screen. First makes the play-button invisible, then sets the background and sets the text.
@@ -636,9 +636,9 @@ function gameInstruction() {
     menuText = game.add.text(game.world.centerX - 175, 210, ' How to play the game? \n \n Watch out for the stones! \n Use left, right and up\n arrows to move. \n Fishcannons give you a level-up!', { font: "24px Arial", fill: "#2aa8bf", align: "center" });
     
     if(button2 !== undefined) {
-        button2.kill();
-        button2 = game.add.button(game.world.centerX - 105, 450, 'menubutton', backInstruction, this, 1, 2, 0);
+          button2.kill(); 
     };
+    button2 = game.add.button(game.world.centerX - 105, 450, 'menubutton', backInstruction, this, 1, 0, 1); 
 };
 
 // function that changes the menu counter to 0 and gameMenu to true and then goes to the homepage
@@ -669,9 +669,10 @@ function gameOver() {
     player.kill();
     healthImage.visible = false;
 
-    button = game.add.button(game.world.centerX - 110, 400, 'playbutton', reset, this, 0, 0, 0);
-    button2 = game.add.button(game.world.centerX - 110, 500, 'menubutton', back, this, 0, 0, 0);
+    button = game.add.button(game.world.centerX - 110, 400, 'playbutton', reset, this, 1, 0, 1);
+    button2 = game.add.button(game.world.centerX - 110, 500, 'menubutton', back, this, 1, 0, 1);
     gameMenu = !gameMenu;
+    oneTime = true;
     var name = prompt("Add your name to your score to the scoreboard! \n Your score was: " + score, "");
     var newChildRef = ref.push();
     newChildRef.set({
