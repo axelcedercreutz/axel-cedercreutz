@@ -1,5 +1,3 @@
-//hides the table for the highscore
-$('.game-section').hide();
 //adds the firebase-database
 var ref = new Firebase("https://vjp-peli-5db4f.firebaseio.com/");
 ref = ref.child("leaderboard");

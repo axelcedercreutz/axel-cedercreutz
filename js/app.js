@@ -1,3 +1,5 @@
+//hides the table for the highscore
+$('.game-section').hide();
 //open and close toggle-navbat for small screen
 $('.navbar-toggle').click('click', function(e) {
     $('.navbar-collapse').css("background-color","lightgray").toggle() //
